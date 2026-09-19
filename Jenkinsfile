@@ -10,16 +10,23 @@ checkout scm
 }
 }
 
-stage('Run Playwright Tests') {
+stage('Build Docker Image') {
 steps {
-bat 'mvn test'
+bat 'docker build -t playwright-java:latest .'
+}
+}
+
+stage('Run Tests in Docker') {
+steps {
+bat 'docker run --rm playwright-java:latest'
 }
 }
 }
 
 post {
 always {
-junit 'target/surefire-reports/*.xml'
+junit allowEmptyResults: true,
+testResults: 'target/surefire-reports/*.xml'
 }
 }
 }
