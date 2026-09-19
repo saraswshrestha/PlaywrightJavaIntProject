@@ -32,8 +32,12 @@ bat 'docker run --rm playwright-java:latest'
 
 post {
 always {
+
 junit allowEmptyResults: true,
 testResults: 'target/surefire-reports/*.xml'
+
+archiveArtifacts artifacts: 'target/screenshots/**/*,target/videos/**/*,target/traces/**/*',
+allowEmptyArchive: true
 }
 }
-}
+
