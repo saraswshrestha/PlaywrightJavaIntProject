@@ -40,4 +40,4 @@ archiveArtifacts artifacts: 'target/screenshots/**/*,target/videos/**/*,target/t
 allowEmptyArchive: true
 }
 }
-
+}
