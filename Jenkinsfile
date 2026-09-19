@@ -10,6 +10,13 @@ checkout scm
 }
 }
 
+stage('Check Docker') {
+steps {
+bat 'docker --version'
+bat 'docker info'
+}
+}
+
 stage('Build Docker Image') {
 steps {
 bat 'docker build -t playwright-java:latest .'
